@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plus+Hospital</title>
+    <link rel="shortcut icon" href="../flower-image/icons.ico">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body{
+            background-image:url("../flower-image/hospital-back5.jpg");
+            background-repeat:no-repeat;
+            background-size:cover;
+            height:100vh;
+            /* width:100vw; */
+            background-attachment:fixed;
+            background-color:rgba(31, 119, 154, 0.567);
+           
+        }
+        .container{
+            display:flex;
+            justify-content:space-between;
+            align-items: center;
+            
+        }
+
+        .containerAdd{
+            display:flex;
+            justify-content:space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .containerLog{
+            display:flex;
+        }
+
+        .containerLogAdd{
+            display:flex;
+        }
+
+        .containerLog div{
+            margin-right:20px;
+        }
+        .containerLogAdd div{
+            margin-right:20px;
+        }
+        .containerLog button{
+            padding:5px;
+            font-family:arial;
+            font-size:1em;
+            background-color:white;
+            border:2px solid red;
+            box-shadow:1px 1px 2px red;
+            margin:2px;
+            text-shadow:2px 2px 2px wheat;
+        }
+
+        .containerLogAdd button{
+            padding:5px;
+            font-family:arial;
+            font-size:1em;
+            background-color:red;
+            border:2px solid black;
+            box-shadow:1px 1px 2px red;
+            color:white;
+            margin:2px;
+            text-shadow:2px 2px 2px black;
+        }
+
+        button:hover{
+            cursor:pointer;
+        }
+        
+        .logo{
+            font-size:2em;
+            font-family:Magneto;
+            color:white;
+            text-shadow:3px 3px 2px red;
+        }
+        .logoAdd{
+            font-size:2em;
+            font-family:Magneto;
+            color:black;
+            text-shadow:3px 3px 2px red;
+        }
+        .loginContainer{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            margin-top:130px;
+        }
+        .registerContainer{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .verifyContainer{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .resetContainer{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .addDrContainer{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            margin-top:-80px;
+        }
+
+        .loginDiv{
+            width:350px;
+            height:310px;
+            border:4px double red;
+            background-color:white;
+            box-shadow:1px 1px 2px black;
+            display:none;
+        }
+        .registerDiv{
+            width:350px;
+            height:350px;
+            border:4px double red;
+            background-color:white;
+            box-shadow:1px 1px 2px black;
+            display:none;
+        }
+        .verifyDiv{
+            width:350px;
+            height:310px;
+            border:4px double red;
+            background-color:white;
+            box-shadow:1px 1px 2px black;
+            display:none;
+        }
+        .resetDiv{
+            width:350px;
+            height:260px;
+            border:4px double red;
+            background-color:white;
+            box-shadow:1px 1px 2px black;
+            display:none;
+        }
+        .addDrDiv{
+            width:340px;
+            height:600px;
+            border:4px double green;
+            /* background-image:linear-gradient(to left,rgba(19, 19, 64, 0.462),rgba(21, 20, 53, 0.462)); */
+            background-color:white;
+            box-shadow:2px 2px 2px black;
+            overflow: auto;
+            
+            display:none;
+        }
+       
+        .addDrList dt{
+            margin-left:50px;
+            margin-top:10px;
+            font-family:Helvetica;
+            text-shadow:2px 2px 2px wheat;
+            color:black;
+
+        }
+        .addDrList input{
+            border:2px solid rgb(15, 222, 15);
+            box-shadow:1px 1px 1px green;
+            
+        }
+        .addDrList select{
+            border:2px solid rgb(15, 222, 15);
+            box-shadow:1px 1px 1px green;
+            width:242px;
+            padding:5px;
+        }
+        
+        input{
+            padding:5px;
+            border:1px solid red;
+            box-shadow:1px 1px 1px red;
+            font-family:arial;
+        }
+        dl dd{
+            padding:10px;
+        }
+        .loginInfo,.registerInfo,.verifyInfo,.resetInfo{
+            font-family:'Brush Script MT';
+            margin-left:50px;
+            color:rgb(7, 7, 51);
+            font-size:20px;
+            padding:initial;
+            text-shadow:2px 2px 2px wheat;
+        }
+        .addDrInfo{
+        
+            font-family:Magneto;
+            margin-left:50px;
+            color:rgb(5, 5, 30);
+            font-weight:bold;
+            font-size:20px;
+            padding:initial;
+            text-shadow:2px 2px 2px wheat;
+        }
+
+        .log_Button,.register_Button,.verify_Button,.reset_Button{
+            padding:5px;
+            width:239px;
+            font-family:arial;
+            font-size:15px;
+            background-color:white;
+            color:black;
+            border:1px solid red;
+            box-shadow:1px 1px 1px red;
+            
+        }
+        .addDr_Button{
+            padding:5px;
+            width:239px;
+            font-family:arial;
+            font-size:15px;
+            background-color:rgb(4, 4, 112);
+            color:white;
+            border:1px solid black;
+            box-shadow:1px 1px 1px green;
+            text-shadow:2px 2px 2px black;
+        }
+        .cancel_Button{
+            padding:5px;
+            width:239px;
+            font-family:arial;
+            font-size:15px;
+            background-color:red;
+            color:white;
+            border:1px solid black;
+            box-shadow:1px 1px 1px green;
+            text-shadow:2px 2px 2px black;
+        }
+        .log_Button:hover,.register_Button:hover,.verify_Button:hover,.reset_Button:hover{
+            background-color:red;
+            color:white;
+            border:2px solid black;
+            text-shadow:2px 2px 2px black;
+        }
+        .bi-person-check-fill,.bi-pencil-square,.bi-arrow-counterclockwise{
+            color:green;
+            text-shadow:2px 2px 2px black;
+        }
+        .bi-person-badge{
+            color:red;
+            text-shadow:2px 2px 2px black;
+        }
+        .forgetButton{
+            font-family:arial;
+            color:rgb(7, 7, 51);
+            text-shadow:2px 2px 2px wheat;
+            padding:initial;
+            background-color:white;
+            border:none;
+        }
+        .headerAdd{
+            display:none;
+        }
+        .dr_Details_Container{
+            border:7px double blue;
+            background-color:white;
+            box-shadow:2px 2px 2px black;
+            display:none;
+        }
+        .dr_Details_List{
+            display:grid;
+            grid-template-columns:3fr 9fr;
+            margin:10px;
+        }
+        .dr_Details_List dd{
+            padding:initial;
+            margin:6px;
+            font-family:arial;
+            color:gray;
+        }
+        .dr_Details_List dt{
+            margin:6px;
+            font-family:helvetica;
+            /* font-weight:bold; */
+            color:black;
+            text-shadow:2px 2px 2px wheat;
+        }
+        
+
+    </style>
+    <script type="text/javascript">
+        function bodyLoad(){
+            "use strict"
+             var header = document.createElement("header");
+             header.className='header';
+             var container = document.createElement("div");
+             container.className="container";
+            
+             var logo = document.createElement("div");
+             logo.className = "logo";
+             var containerLog = document.createElement("div");
+             var register = document.createElement("div");
+             var login = document.createElement("div");
+
+             logo.innerHTML="Plus<span><i class='bi bi-heart-pulse'></i></span>hospital";
+             register.innerHTML ="<button onclick='loginClick()'>Login</button>";
+             login.innerHTML ="<button onclick='registerClick()'>Register</button>";
+            
+             container.appendChild(logo);
+             container.appendChild(containerLog);
+             containerLog.appendChild(register);
+             containerLog.className="containerLog";
+             containerLog.appendChild(login);
+             header.appendChild(container);
+             document.querySelector("body").appendChild(header);
+
+            //------------------------------------------------------------------------------
+            //create second header
+            //-------------------------------------------------------------------------------
+            var headerAdd = document.createElement("header");
+            headerAdd.className='headerAdd';
+            var containerAdd = document.createElement("div");
+            containerAdd.className="containerAdd";
+            
+            var logoAdd = document.createElement("div");
+            logoAdd.className = "logoAdd";
+            var containerLogAdd = document.createElement("div");
+            var addDr = document.createElement("div");
+            var logout = document.createElement("div");
+
+            logoAdd.innerHTML="Welcome To Plus<span><i class='bi bi-heart-pulse'></i></span>hospital";
+            addDr.innerHTML ="<button onclick='addDrClick()'>Add Doctor</button>";
+            logout.innerHTML ="<button onclick='logoutClick()'>Logout</button>";
+
+            containerAdd.appendChild(logoAdd);
+            containerAdd.appendChild(containerLogAdd);
+            containerLogAdd.appendChild(addDr);
+            containerLogAdd.className="containerLogAdd";
+            containerLogAdd.appendChild(logout);
+            headerAdd.appendChild(containerAdd);
+            document.querySelector("body").appendChild(headerAdd);
+        
+
+            // section
+            // section = document.createElement("section");
+            window.section = document.createElement("section");
+
+            // login-form
+            var loginContainer = document.createElement("div");
+            loginContainer.className="loginContainer";
+            section.appendChild(loginContainer);
+
+            var loginDiv = document.createElement("div");
+            loginDiv.className="loginDiv";
+            loginContainer.appendChild(loginDiv);
+
+            var login_form = document.createElement("form");
+            loginDiv.appendChild(login_form);
+
+            var formList = document.createElement("dl");
+            login_form.appendChild(formList);
+
+            //login info
+            var loginInfo = document.createElement("dd");
+            loginInfo.className="loginInfo";
+            loginInfo.innerHTML="<h2>Login <span> <i class='bi bi-person-check-fill'></i></span></h2>";
+            formList.appendChild(loginInfo);
+            // log_User_Name
+            var log_User_Name = document.createElement("dd");
+            log_User_Name.innerHTML="<input type='text' placeholder='Username' size='30'>";
+            formList.appendChild(log_User_Name);
+            // log_User_pass
+            var log_User_Pass = document.createElement("dd");
+            log_User_Pass.innerHTML="<input type='password' placeholder='Password' size='30'>";
+            formList.appendChild(log_User_Pass);
+            // log_Button
+            var loginButton = document.createElement("dd");
+            loginButton.innerHTML="<button class='log_Button' type='button' onclick='LoginClick()'>Login</button>";
+            formList.appendChild(loginButton);
+            // forgetButton
+            var forgetButton = document.createElement("dd");
+            
+            forgetButton.innerHTML = "<button class='forgetButton' onclick='forgetClick()' type='button'><h2>Forget Password..?</h2></button>";
+            formList.appendChild(forgetButton);
+
+            
+
+            
+
+            //Register-Form
+
+            var registerContainer = document.createElement("div");
+            registerContainer.className="registerContainer";
+            section.appendChild(registerContainer);
+
+            var registerDiv = document.createElement("div");
+            registerDiv.className="registerDiv";
+            //document.querySelector(".registerDiv").style.display="none";
+            registerContainer.appendChild(registerDiv);
+
+            var register_form = document.createElement("form");
+            registerDiv.appendChild(register_form);
+
+            var registerList = document.createElement("dl");
+            register_form.appendChild(registerList);
+
+            //Register Info
+            var registerInfo = document.createElement("dd");
+            registerInfo.className="registerInfo";
+            registerInfo.innerHTML="<h2>Register <span><i class='bi bi-pencil-square'></i></span></h2>";
+            registerList.appendChild(registerInfo);
+
+            //Register_User_Name
+            var register_User_Name = document.createElement("dd");
+            register_User_Name.innerHTML="<input type='text' placeholder='Username' size='30' id='regi_Name'>";
+            registerList.appendChild(register_User_Name);
+
+            //Register_User_Email
+            var register_User_Email = document.createElement("dd");
+            register_User_Email.innerHTML="<input type='email' placeholder='mail-id@.domain' size=30 id='regi_Email'>";
+            registerList.appendChild(register_User_Email);
+
+            //Register_User_Num
+            var register_User_Num = document.createElement("dd");
+            register_User_Num.innerHTML="<input type='text'placeholder='+91-(10)digit-mobile-number' size=30 id='regi_Num'>";
+            registerList.appendChild(register_User_Num);
+
+            // register_User_pass
+            var register_User_Pass = document.createElement("dd");
+            register_User_Pass.innerHTML="<input type='password' placeholder='Password' size='30' id='regi_Pass'>";
+            registerList.appendChild(register_User_Pass);
+
+            // register_Button
+            var registerButton = document.createElement("dd");
+            registerButton.innerHTML="<button class='register_Button' type='button' onclick='RegisterClick()'>Register</button>";
+            registerList.appendChild(registerButton);
+            
+            //------------------------------------------------------------------------------
+            //Verify Password
+            var verifyContainer = document.createElement("div");
+            verifyContainer.className="verifyContainer";
+            section.appendChild(verifyContainer);
+
+            var verifyDiv = document.createElement("div");
+            verifyDiv.className="verifyDiv";
+            //document.querySelector(".verifyDiv").style.display="none";
+            verifyContainer.appendChild(verifyDiv);
+
+            var verify_form = document.createElement("form");
+            verifyDiv.appendChild(verify_form);
+
+            var verifyList = document.createElement("dl");
+            verify_form.appendChild(verifyList);
+
+            //verify Info
+            var verifyInfo = document.createElement("dd");
+            verifyInfo.className="verifyInfo";
+            
+            verifyInfo.innerHTML="<h2>Reset Password <span><i class='bi bi-arrow-counterclockwise'></i></span></h2>";
+            verifyList.appendChild(verifyInfo);
+
+            //verify_User_Name
+            var verify_User_Name = document.createElement("dd");
+            verify_User_Name.innerHTML="<input type='text' placeholder='Username' size='30' id='veri_Name'>";
+            verifyList.appendChild(verify_User_Name);
+
+            //verify_User_Email
+            var verify_User_Email = document.createElement("dd");
+            verify_User_Email.innerHTML="<input type='email' placeholder='mail-id@.domain' size=30 id='veri_Email'>";
+            verifyList.appendChild(verify_User_Email);
+
+            //verify_User_Num
+            var verify_User_Num = document.createElement("dd");
+            verify_User_Num.innerHTML="<input type='text'placeholder='+91-(10)digit-mobile-number' size=30 id='veri_Num'>";
+            verifyList.appendChild(verify_User_Num);
+
+            // verify_Button
+            var verifyButton = document.createElement("dd");
+            verifyButton.innerHTML="<button class='verify_Button' type='button' onclick='verifyClick()'>Verify</button>";
+            verifyList.appendChild(verifyButton);
+
+            //------------------------------------------------------------------------------
+            //Reset Password
+
+            var resetContainer = document.createElement("div");
+            resetContainer.className="resetContainer";
+            section.appendChild(resetContainer);
+
+            var resetDiv = document.createElement("div");
+            resetDiv.className="resetDiv";
+           
+            resetContainer.appendChild(resetDiv);
+
+            var reset_form = document.createElement("form");
+            resetDiv.appendChild(reset_form);
+
+            var resetList = document.createElement("dl");
+            reset_form.appendChild(resetList);
+
+            //reset Info
+            var resetInfo = document.createElement("dd");
+            resetInfo.className="resetInfo";
+            
+            resetInfo.innerHTML="<h2>Reset Password <span><i class='bi bi-arrow-counterclockwise'></i></span></h2>";
+            resetList.appendChild(resetInfo);
+
+            // reset_User_New_pass
+            var reset_New_Pass = document.createElement("dd");
+            reset_New_Pass.innerHTML="<input type='password' placeholder='Enter New Password' size='30' id='reset_Pass'>";
+            resetList.appendChild(reset_New_Pass);
+
+            // reset_User_Confirm_pass
+            var reset_Conf_Pass = document.createElement("dd");
+            reset_Conf_Pass.innerHTML="<input type='password' placeholder='Confirm New Password' size='30' id='reset_Conf'>";
+            resetList.appendChild(reset_Conf_Pass);
+
+            // reset_Button
+            var resetButton = document.createElement("dd");
+            resetButton.innerHTML="<button class='reset_Button' type='button' onclick='resetClick()'>Change Password</button>";
+            resetList.appendChild(resetButton);
+
+           //------------------------------------------------------------------------------
+           //Add Doctor Form
+           //------------------------------------------------------------------------------
+
+           var addDrContainer = document.createElement("div");
+           addDrContainer.className="addDrContainer";
+           section.appendChild(addDrContainer);
+
+           var addDrDiv = document.createElement("div");
+           addDrDiv.className="addDrDiv";
+           addDrContainer.appendChild(addDrDiv);
+
+           var addDr_form = document.createElement("form");
+           addDrDiv.appendChild(addDr_form);
+
+           
+           //AddDr info
+           var addDrInfo = document.createElement("div");
+           addDrInfo.className="addDrInfo";
+           addDrInfo.innerHTML="<h2>Add Doctor<span> <i class='bi bi-person-badge'></i></span></h2>";
+           addDr_form.appendChild(addDrInfo);
+
+           //AddDrList
+           var addDrList = document.createElement("dl");
+           addDrList.className='addDrList';
+           addDr_form.appendChild(addDrList);
+
+           //addDr_Id_label
+           var addDr_Id_Label = document.createElement("dt");
+           addDr_Id_Label.innerHTML="<label for='drId'>Doctor ID</lable>";
+           addDrList.appendChild(addDr_Id_Label);
+           //addDr_Id_input
+           var addDr_Id_input = document.createElement("dd");
+           addDr_Id_input.innerHTML="<input type='text' placeholder='Doctor ID' size='30' id='addDr_Id'>";
+           addDrList.appendChild(addDr_Id_input);
+
+           //addDr_Name_label
+           var addDr_Name_Label = document.createElement("dt");
+           addDr_Name_Label.innerHTML="<label for='drName'>Doctor Name:</lable>";
+           addDrList.appendChild(addDr_Name_Label);
+           //addDr_Name_input
+           var addDr_Name_input = document.createElement("dd");
+           addDr_Name_input.innerHTML="<input type='text' placeholder='Doctor Name' size='30' id='addDr_Name'>";
+           addDrList.appendChild(addDr_Name_input);
+
+           //addDr_Gen_label
+           var addDr_Gen_Label = document.createElement("dt");
+           addDr_Gen_Label.innerHTML="<label for='drGen'>Doctor Gender:</lable>";
+           addDrList.appendChild(addDr_Gen_Label);
+           //addDr_Gen_input
+           var addDr_Gen_input = document.createElement("dd");
+           addDr_Gen_input.innerHTML="<input type='radio' name='gender' value='Male' id='addDr_Male'> Male <input type='radio' name='gender' value='Female' id='addDr_Female'> Female";
+           addDrList.appendChild(addDr_Gen_input);
+
+           //addDr_Email_label
+           var addDr_Email_Label = document.createElement("dt");
+           addDr_Email_Label.innerHTML="<label for='drEmail'>Doctor Email:</lable>";
+           addDrList.appendChild(addDr_Email_Label);
+           //addDr_Email_input
+           var addDr_Email_input = document.createElement("dd");
+           addDr_Email_input.innerHTML="<input type='email' placeholder='email-id@domain' size='30' id='addDr_Email'>";
+           addDrList.appendChild(addDr_Email_input);
+
+           //addDr_Num_label
+           var addDr_Num_Label = document.createElement("dt");
+           addDr_Num_Label.innerHTML="<label for='drNum'>Doctor Number:</lable>";
+           addDrList.appendChild(addDr_Num_Label);
+           //addDr_Num_input
+           var addDr_Num_input = document.createElement("dd");
+           addDr_Num_input.innerHTML="<input type='text' placeholder='+91(10)-digit number' size='30' id='addDr_Num'>";
+           addDrList.appendChild(addDr_Num_input);
+
+           //addDr_Role_label
+           var addDr_Role_Label = document.createElement("dt");
+           addDr_Role_Label.innerHTML="<label for='drRole'>Doctor Role:</lable>";
+           addDrList.appendChild(addDr_Role_Label);
+           //addDr_Role_input
+           var addDr_Role_input = document.createElement("dd");
+           addDr_Role_input.innerHTML=`<select>
+            <option>Select Doctor Role<option>
+            <option id='Gen_Phy' value='General Physicians'>General Physicians<option>
+            <option id='Pedia' value='Pediatricians'>Pediatricians<option>
+            <option id='Gen_Sur' value='General Surgeon'>General Surgeon<option>
+            <option id='Cardio' value='Cardiologist'>Cardiologist<option>
+            
+           <\select>`;
+           addDrList.appendChild(addDr_Role_input);
+
+           //addDr_Sal_label
+           var addDr_Sal_Label = document.createElement("dt");
+           addDr_Sal_Label.innerHTML="<label for='drSal'>Doctor Salary:</lable>";
+           addDrList.appendChild(addDr_Sal_Label);
+           //addDr_Sal_input
+           var addDr_Sal_input = document.createElement("dd");
+           addDr_Sal_input.innerHTML="<input type='text' placeholder='Doctor Salary' size='30' id='addDr_Sal'>";
+           addDrList.appendChild(addDr_Sal_input);
+
+           //addDr_Button
+           var addDr_Button = document.createElement("dd");
+           addDr_Button.innerHTML="<button type='button' class='addDr_Button' onclick='addDr_Click()'>Add Doctor</button>";
+           addDrList.appendChild(addDr_Button);
+
+           //cancel_Button
+           var cancel_Button = document.createElement("dd");
+           cancel_Button.innerHTML="<button type='button' class='cancel_Button' onclick='cancelClick()'>cancel</button>";
+           addDrList.appendChild(cancel_Button);
+
+           //--------------------------------------------------------------------------------
+           //All Add Doctor Details Create Here
+           //--------------------------------------------------------------------------------
+
+        //    var dr_Details_Container = document.createElement("div");
+           window.dr_Details_Container = document.createElement("div");
+           dr_Details_Container.className = "dr_Details_Container";
+        //    section.appendChild(dr_Details_Container);
+
+           window.Details = document.createElement("div");
+           Details.id = "Details";
+           section.appendChild(Details);
+
+           
+
+           //Dr_Details_List
+           var dr_Details_List = document.createElement("dl");
+           dr_Details_List.className = "dr_Details_List";
+           dr_Details_Container.appendChild(dr_Details_List);
+
+           //dr_Id
+           var dr_Id = document.createElement("dt");
+           dr_Id.innerHTML="Doctor ID:";
+           dr_Details_List.appendChild(dr_Id);
+           
+           var dr_Lid = document.createElement("dd");
+           dr_Lid.id="dr_Lid";
+           dr_Details_List.appendChild(dr_Lid);
+
+           //dr_Name
+           var dr_Name = document.createElement("dt");
+           dr_Name.innerHTML="Doctor Name:";
+           dr_Details_List.appendChild(dr_Name);
+           
+           var dr_Lname = document.createElement("dd");
+           dr_Lname.id="dr_Lname";
+           dr_Details_List.appendChild(dr_Lname);
+
+           //dr_Gender
+           var dr_Gen = document.createElement("dt");
+           dr_Gen.innerHTML="Doctor Gender:";
+           dr_Details_List.appendChild(dr_Gen);
+           
+           var dr_Lgen = document.createElement("dd");
+           dr_Lgen.id="dr_Lgen";
+           dr_Details_List.appendChild(dr_Lgen);
+
+           //dr_Email
+           var dr_Email = document.createElement("dt");
+           dr_Email.innerHTML="Doctor Email:";
+           dr_Details_List.appendChild(dr_Email);
+           
+           var dr_Lemail = document.createElement("dd");
+           dr_Lemail.id="dr_Lemail";
+           dr_Details_List.appendChild(dr_Lemail);
+           
+           //dr_num
+           var dr_Num = document.createElement("dt");
+           dr_Num.innerHTML="Doctor Number:";
+           dr_Details_List.appendChild(dr_Num);
+           
+           var dr_Lnum = document.createElement("dd");
+           dr_Lnum.id="dr_Lnum";
+           dr_Details_List.appendChild(dr_Lnum);
+
+           //dr_Role
+           var dr_Role = document.createElement("dt");
+           dr_Role.innerHTML="Doctor Role:";
+           dr_Details_List.appendChild(dr_Role);
+           
+           var dr_Lrole = document.createElement("dd");
+           dr_Lrole.id="dr_Lrole";
+           dr_Details_List.appendChild(dr_Lrole);
+
+           //dr_Sal
+           var dr_Sal = document.createElement("dt");
+           dr_Sal.innerHTML="Doctor Salary:";
+           dr_Details_List.appendChild(dr_Sal);
+           
+           var dr_Lsal = document.createElement("dd");
+           dr_Lsal.id="dr_Lsal";
+           dr_Details_List.appendChild(dr_Lsal);
+           
+
+
+
+           
+
+           
+            
+            // all child append in section
+            document.querySelector("body").appendChild(section);
+            //------------------------------------------------------------------------------
+        }
+    
+        //-----------------------------------------------------------------------------------
+        // All function create here
+        //-----------------------------------------------------------------------------------
+
+        //login_Click()
+        function loginClick(){
+            document.querySelector(".loginDiv").style.display="block";
+            document.querySelector(".registerDiv").style.display="none";
+            document.querySelector(".verifyDiv").style.display='none';
+            document.querySelector(".resetDiv").style.display='none';
+        }
+
+        //register_Click()
+        function registerClick(){
+            document.querySelector(".registerDiv").style.display="block";
+            document.querySelector(".loginDiv").style.display="none";
+            document.querySelector(".verifyDiv").style.display='none';
+            document.querySelector(".resetDiv").style.display='none';
+        }
+
+        //forget_Click()
+        function forgetClick(){
+            document.querySelector(".loginDiv").style.display="none";
+            document.querySelector(".verifyDiv").style.display='block';
+            // document.querySelector(".registerDiv").style.display="none";
+        }
+        //verify_Click()
+        function verifyClick(){
+            document.querySelector(".verifyDiv").style.display='none';
+            document.querySelector(".resetDiv").style.display='block';
+            document.querySelector(".registerDiv").style.display="none";
+            document.querySelector(".loginDiv").style.display="none";
+        }
+        //reset_Click()
+        function resetClick(){
+            document.querySelector(".resetDiv").style.display='none';
+            document.querySelector(".registerDiv").style.display="none";
+            document.querySelector(".loginDiv").style.display="block";
+        }
+        //RegisterClick()
+        function RegisterClick(){
+            "use strict"
+            
+            document.querySelector(".registerDiv").style.display="none";
+            document.querySelector(".loginDiv").style.display="block";
+        }
+        //LoginClick()
+        function LoginClick(){
+            document.querySelector("body").style=" background-image:url('../flower-image/hospital-back.jpg'); background-size:150em;";
+            document.querySelector(".loginDiv").style.display="none";
+            document.querySelector(".header").style.display='none';
+            document.querySelector(".headerAdd").style.display='block';
+            // document.querySelector(".addDrDiv").style.display="block";
+        }
+        //addDrClick()
+        function addDrClick(){
+            document.querySelector(".addDrDiv").style.display="block";
+        }
+        //logoutClick()
+        function logoutClick(){
+            document.querySelector("body").style=" background-image:url('../flower-image/hospital-back5.jpg'); background-size:100em";
+            document.querySelector(".header").style.display='block';
+            document.querySelector(".headerAdd").style.display='none';
+            document.querySelector(".addDrDiv").style.display="none";
+            document.querySelector(".dr_Details_Container").style.display="none";
+        }
+        //cancelClick()
+        function cancelClick(){
+            document.querySelector(".addDrDiv").style.display="none";
+        }
+        //addDr_Click()
+        function addDr_Click(){
+            // section.appendChild(dr_Details_Container);
+            document.getElementById("Details").innerHTML+=  section.appendChild(dr_Details_Container);
+            document.querySelector(".dr_Details_Container").style.display="block";
+            document.querySelector(".addDrDiv").style.display="none";
+            document.getElementById("dr_Lid").innerHTML=document.getElementById("addDr_Id").value;
+            document.getElementById("dr_Lname").innerHTML=document.getElementById("addDr_Name").value;
+
+            //all empty variable create here
+            var Gender = "";
+            var Role = "";
+            
+
+            //Radio-option
+            var addDr_Male = document.getElementById("addDr_Male");
+            var addDr_Female = document.getElementById("addDr_Female");
+
+            if(addDr_Male.checked){
+                Gender = addDr_Male.value;
+            }
+            if(addDr_Female.checked){
+                Gender = addDr_Female.value;
+            }
+            document.getElementById("dr_Lgen").innerHTML=Gender;
+            //dr email
+            document.getElementById("dr_Lemail").innerHTML=document.getElementById("addDr_Email").value; 
+            //dr Number
+            document.getElementById("dr_Lnum").innerHTML=document.getElementById("addDr_Num").value;
+            //dr Role
+            var Gen_Phy = document.getElementById("Gen_Phy");
+            var Pedia = document.getElementById("Pedia");
+            var Gen_Sur = document.getElementById("Gen_Sur");
+            var Cardio = document.getElementById("Cardio");
+
+            if (Gen_Phy.selected){
+                Role =  Gen_Phy.value;
+            }
+            if (Pedia.selected){
+                Role = Pedia.value;
+            }
+            if (Gen_Sur.selected){
+                Role = Gen_Sur.value;
+            }
+            if (Cardio.selected){
+                Role = Cardio.value;
+            }
+            document.getElementById("dr_Lrole").innerHTML= Role;
+            //dr Salary
+            document.getElementById("dr_Lsal").innerHTML=document.getElementById("addDr_Sal").value;
+
+            //all dr data empty here
+            document.getElementById("addDr_Id").value="";
+            document.getElementById("addDr_Name").value="";
+            document.getElementById("addDr_Male").checked="";
+            document.getElementById("addDr_Female").checked="";
+            document.getElementById("addDr_Email").value="";
+            document.getElementById("addDr_Num").value="";
+            document.getElementById("Gen_Phy").selected="";
+            document.getElementById("Pedia").selected="";
+            document.getElementById("Gen_Sur").selected="";
+            document.getElementById("Cardio").selected="";
+            document.getElementById("addDr_Sal").value="";
+            
+        }
+    </script>
+ </head>
+ <body onload="bodyLoad()">
+    
+ </body>
+ </html>
